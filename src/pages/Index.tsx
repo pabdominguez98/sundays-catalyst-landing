@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Rocket, Award, Globe, ChevronRight, Code, Database, LineChart, Smartphone, Building } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -23,29 +23,47 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-sundays-50 to-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm border-b">
         <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <span className="text-xl font-bold text-sundays-600">PS Consulting</span>
+            <div className="hidden md:flex space-x-6">
+              <Link to="/history" className="text-gray-600 hover:text-sundays-500">Our History</Link>
+              <Link to="/vision" className="text-gray-600 hover:text-sundays-500">Our Vision</Link>
+              <Link to="/team" className="text-gray-600 hover:text-sundays-500">Our Team</Link>
+              <Link to="/contact" className="text-gray-600 hover:text-sundays-500">Contact</Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Banner with Background Image */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-[url('/photo-1605810230434-7631ac76ec81')] bg-cover bg-center">
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="inline-block px-3 py-1 mb-4 text-sundays-600 bg-sundays-100 rounded-full text-sm font-semibold animate-fade-up">
+            <span className="inline-block px-3 py-1 mb-4 text-white bg-sundays-500/90 rounded-full text-sm font-semibold animate-fade-up">
               Welcome to PaulSundays Consulting
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
               Better Tech,{" "}
-              <span className="text-sundays-500">Better Business</span>
+              <span className="text-sundays-400">Better Business</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
               We turn complex technologies into successful projects in record time,
               powered by the Sundays Method™
             </p>
-            <button className="bg-sundays-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-sundays-600 transition-colors duration-300">
+            <Link to="/contact" className="inline-block bg-sundays-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-sundays-600 transition-colors duration-300">
               Let's Talk
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
